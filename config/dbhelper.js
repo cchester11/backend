@@ -12,7 +12,8 @@ const sequelize = new Sequelize(process.env.DBNAME, process.env.DBUSER, process.
 
 exports.sequelize = sequelize;
 exports.connection = () => {
-      sequelize.authenticate().then(() => {
+      sequelize.authenticate()
+      .then(() => {
                   console.log('the database is now connected to the backend ')
       }).catch(err => {
                         console.error(`Unable to connect to database with error ${err}`)
