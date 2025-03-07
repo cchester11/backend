@@ -34,10 +34,8 @@ const login = (req, res) => {
                         return res.status(400).json({ message: "User not found in the db" })
                   }
 
-                  console.log(user)
-
                   const encryptedRequestPassword = crypto.pbkdf2Sync(password, user.dataValues.salt, 1000, 64, "sha512").toString("hex")
-                  const encryptedDbPassword = crypto.pbkdf2Sync(user.dataValues.password, user.dataValues.salt, 1000, 64, "sha512").toString("hex")
+                  const encryptedDbPassword = user.dataValues.password
 
                   if (encryptedDbPassword !== encryptedRequestPassword) {
                         return res.status(401).json({ message: "Unauthorized access" })
