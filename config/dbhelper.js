@@ -17,7 +17,7 @@ exports.connection = () => {
                   console.log('the database is now connected to the backend ')
 
                   sequelize.sync({
-                        force: true
+                        force: false
                   })
                         .then(() => {
                               console.log('Database synchronized with models')
