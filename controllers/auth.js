@@ -14,7 +14,7 @@ const register = (req, res) => {
       const encryptedPassword = crypto.pbkdf2Sync(password, salt, 1000, 64, "sha512").toString('hex')
 
       // it looks like I should be placing the encryptedPassword in the password parameter slot
-      registration(username, password, salt).then(result => {
+      registration(username, encryptedPassword, salt).then(result => {
             if(result === 'user successfully registered') {
                   return res.status(201).json({ message: "Account created successfully."})
             } else {

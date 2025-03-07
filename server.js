@@ -3,10 +3,12 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const database = require('./config/dbhelper.js');
 const authRoute = require('./routes/auth.js');
+const cors = require('cors');
 
 const PORT = 5001 || process.env.PORT;
 
 const app = express();
+app.use(cors());
 
 database.connection();
 
